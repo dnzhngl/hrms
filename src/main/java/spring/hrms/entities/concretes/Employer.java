@@ -11,6 +11,7 @@ import java.util.Set;
 @Table(name = "employers")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Employer extends User{
 
     @Column(name = "company_name", nullable = false, unique = true, length = 60)
@@ -24,5 +25,8 @@ public class Employer extends User{
 
     @OneToMany(mappedBy = "employer")
     private Set<EmployerVerificationCode> verificationCodes;
+
+    @OneToMany(mappedBy = "employer")
+    private Set<EmployerVerificationByEmployee> employerVerificationByEmployee;
 
 }

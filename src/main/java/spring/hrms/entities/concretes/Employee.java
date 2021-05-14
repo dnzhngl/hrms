@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -23,4 +25,6 @@ public class Employee extends User{
     @Column(name="last_name", nullable = false, length = 35)
     private String lastName;
 
+    @OneToMany(mappedBy = "employee")
+    private Set<EmployerVerificationByEmployee> employerVerificationByEmployee;
 }
