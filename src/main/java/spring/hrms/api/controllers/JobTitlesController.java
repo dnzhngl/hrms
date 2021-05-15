@@ -26,9 +26,18 @@ public class JobTitlesController {
         jobTitleService.add(jobTitle);
     }
 
-    // Empty method
-    @PostMapping("/update")
+    @PutMapping("/update")
     public void update(@RequestBody JobTitle jobTitle){
         jobTitleService.update(jobTitle);
+    }
+
+    @DeleteMapping("/delete")
+    public void delete(@RequestBody JobTitle jobTitle){
+        jobTitleService.delete(jobTitle);
+    }
+
+    @GetMapping("/getById/{id}")
+    public JobTitle getById(@PathVariable int id){
+        return jobTitleService.getById(id);
     }
 }

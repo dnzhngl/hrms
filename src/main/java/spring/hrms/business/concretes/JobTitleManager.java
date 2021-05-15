@@ -29,7 +29,17 @@ public class JobTitleManager implements JobTitleService {
 
     @Override
     public void update(JobTitle jobTitle) {
+        jobTitleDao.save(jobTitle);
+    }
 
+    @Override
+    public void delete(JobTitle jobTitle) {
+        jobTitleDao.delete(jobTitle);
+    }
+
+    @Override
+    public JobTitle getById(int id) {
+        return jobTitleDao.findById(id).orElse(null);
     }
 
 }

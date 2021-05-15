@@ -6,6 +6,8 @@ import spring.hrms.business.abstracts.EmployeeService;
 import spring.hrms.dataAccess.abstracts.EmployeeDao;
 import spring.hrms.entities.concretes.Employee;
 
+import java.util.List;
+
 @Service
 public class EmployeeManager implements EmployeeService {
 
@@ -22,7 +24,22 @@ public class EmployeeManager implements EmployeeService {
     }
 
     @Override
+    public void update(Employee employee) {
+        employeeDao.save(employee);
+    }
+
+    @Override
+    public void delete(Employee employee) {
+        employeeDao.delete(employee);
+    }
+
+    @Override
     public Employee getById(int id) {
         return employeeDao.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Employee> getAll() {
+        return employeeDao.findAll();
     }
 }
